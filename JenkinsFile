@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main',
+                    url: 'git@github.com:anisharma01/JenkinsServerProject.git'
+            }
+        }
+        stage('Execute Script') {
+            steps {
+                sh 'chmod +x check_ip.sh'
+                sh './check_ip.sh'
+            }
+        }
+    }
+}
